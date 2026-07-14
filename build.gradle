@@ -19,11 +19,31 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-webmvc'
-    testImplementation 'org.springframework.boot:spring-boot-starter-webmvc-test'
-    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    implementation 'dev.langchain4j:langchain4j'
+    implementation 'dev.langchain4j:langchain4j-document-parser-apache-pdfbox'
+    implementation 'org.apache.pdfbox:pdfbox:3.0.7'
+
+    implementation 'dev.langchain4j:langchain4j-embeddings-all-minilm-l6-v2'
+
+    // ---- Stage 3: Vector Store ----
+    // In-memory store langchain4j-core ke saath hi aata hai, extra dependency nahi chahiye.
+    // Persistent store chahiye to ye uncomment karo:
+    // implementation 'dev.langchain4j:langchain4j-pgvector'
+
+    // ---- Stage 4: RAG (LLM chat model) ----
+    implementation 'dev.langchain4j:langchain4j-google-ai-gemini'
+    implementation 'dev.langchain4j:langchain4j-spring-boot-starter'
+
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
 tasks.named('test') {
     useJUnitPlatform()
+}
+dependencyManagement {
+    imports {
+        mavenBom 'dev.langchain4j:langchain4j-bom:1.17.2'
+    }
 }

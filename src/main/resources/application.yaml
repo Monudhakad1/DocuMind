@@ -1,3 +1,12 @@
 spring:
   application:
     name: DocuMind
+
+
+  servlet:
+    multipart:
+      max-request-size: 50MB
+      max-file-size: 50MB
+
+api:
+  key=${api-key}
