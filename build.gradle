@@ -27,12 +27,9 @@ dependencies {
 
     implementation 'dev.langchain4j:langchain4j-embeddings-all-minilm-l6-v2'
 
-    // ---- Stage 3: Vector Store ----
-    // In-memory store langchain4j-core ke saath hi aata hai, extra dependency nahi chahiye.
-    // Persistent store chahiye to ye uncomment karo:
+
     // implementation 'dev.langchain4j:langchain4j-pgvector'
 
-    // ---- Stage 4: RAG (LLM chat model) ----
     implementation 'dev.langchain4j:langchain4j-google-ai-gemini'
     implementation 'dev.langchain4j:langchain4j-spring-boot-starter'
 

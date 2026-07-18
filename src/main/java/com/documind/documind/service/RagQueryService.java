@@ -47,14 +47,20 @@ public class RagQueryService {
         String context = retrieveWithNeighborContext(userQuestion, 3);
 
         String prompt = """
-                You are a helpful assistant. Answer the question strictly using the context below.
-                If the answer isn't in the context, say you don't know.
+You are an expert software engineer.
 
-                Context:
-                %s
+Use the documentation below as the primary source.
 
-                Question: %s
-                """.formatted(context, userQuestion);
+If the documentation is outdated or uses an older implementation, provide the latest recommended implementation and explain the difference.
+
+If the documentation does not fully answer the question, complete the answer using your software engineering knowledge.
+
+Documentation:
+%s
+
+Question:
+%s
+""".formatted(context,userQuestion);
 
         return chatModel.chat(prompt);
     }

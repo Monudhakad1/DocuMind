@@ -10,3 +10,4 @@ spring:
 
 api:
   key=${api-key}
+
