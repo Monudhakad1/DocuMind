@@ -20,8 +20,12 @@ jobs:
             distribution: temurin
             java-version: 17
             cache: gradle
+
+#        - name: Grant execute permission
+#          run: chmod +x gradlew
+
         - name: build jar
-          run: ./gradlew build -xtest
+          run: ./gradlew build -x test
 
         - name: building docker image
           run: docker build -t ${{secrets.DOCKERHUB_USERNAME}}/${{env.IMAGE_NAME}}:latest .
