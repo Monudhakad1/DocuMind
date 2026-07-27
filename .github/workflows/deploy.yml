@@ -21,8 +21,8 @@ jobs:
             java-version: 17
             cache: gradle
 
-#        - name: Grant execute permission
-#          run: chmod +x gradlew
+        - name: Grant execute permission
+          run: chmod +x gradlew
 
         - name: build jar
           run: ./gradlew build -x test
