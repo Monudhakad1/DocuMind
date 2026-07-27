@@ -45,5 +45,5 @@ jobs:
               docker pull ${{secrets.DOCKERHUB_USERNAME}}/${{env.IMAGE_NAME}}:latest
               docker stop documind || true
               docker rm documind || true
-              docker run -d --name documind --restart unless-stopped -p 8080:8080 ${{secrets.DOCKERHUB_USERNAME}}/${{env.IMAGE_NAME}}:latest     
+              docker run -d --name documind -e "api-key=${{secrets.API_KEY}}" --restart unless-stopped -p 8080:8080 ${{secrets.DOCKERHUB_USERNAME}}/${{env.IMAGE_NAME}}:latest     
               docker image prune -f
